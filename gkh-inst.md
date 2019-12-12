@@ -1,6 +1,6 @@
 ## When Docker allready installed do next:
 
-### Some installation of Go language
+### Installation Go (to working direcoty)
 ~~~sh
 mkdir $HOME/work && cd $HOME/work
 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
@@ -43,7 +43,7 @@ mv linux-amd64/helm /usr/local/bin/helm
 ... from: https://v2.helm.sh/docs/using_helm/#installing-helm
 ... releases: https://github.com/helm/helm/releases
 
-#### If you need install Docker CE correctly (Debian/Ubuntu)
+#### Installation Docker CE correctly (Debian/Ubuntu)
 ~~~sh
 # Update the APT package index:
 sudo apt update
@@ -78,4 +78,4 @@ sudo usermod -aG docker $USER
 
 ... from: https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
-###### This installation for testing only (to be continue)
+###### This installation for testing only (to be continued).
