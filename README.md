@@ -37,8 +37,8 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 ~~~sh
 wget https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
 tar -xzf helm-v2.16.1-linux-amd64.tar.gz
-mv tar -xzf helm-v2.16.1-linux-amd64.tar.gz tmp/
-mv linux-amd64/helm /usr/local/bin/helm
+mv helm-v2.16.1-linux-amd64.tar.gz tmp/
+sudo mv linux-amd64/helm /usr/local/bin/helm
 ~~~
 ... from: https://v2.helm.sh/docs/using_helm/#installing-helm
 ... releases: https://github.com/helm/helm/releases
