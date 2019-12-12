@@ -11,7 +11,7 @@ export GOROOT=$HOME/work/go
 export GOPATH=$HOME/work/main-path
 export PATH=$PATH:$GOROOT/bin
 ~~~
-From: https://golang.org/doc/install Releases: https://golang.org/dl/
+... from: https://golang.org/doc/install ... releases: https://golang.org/dl/
 
 ### Inatallation of Kind
 ~~~sh
@@ -23,15 +23,15 @@ EOF
 #
 source $HOME/.profile
 ~~~
-From: https://kind.sigs.k8s.io/docs/user/quick-start
+... from: https://kind.sigs.k8s.io/docs/user/quick-start
 
 ### Installation kubectl
-From: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 ~~~sh
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ~~~
+... from: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 ### Inatallation Helm 2
 ~~~sh
@@ -40,8 +40,8 @@ tar -xzf helm-v2.16.1-linux-amd64.tar.gz
 mv tar -xzf helm-v2.16.1-linux-amd64.tar.gz tmp/
 mv linux-amd64/helm /usr/local/bin/helm
 ~~~
-From: https://v2.helm.sh/docs/using_helm/#installing-helm
-Releases: https://github.com/helm/helm/releases
+... from: https://v2.helm.sh/docs/using_helm/#installing-helm
+... releases: https://github.com/helm/helm/releases
 
 ###### Some template:
 ~~~sh
