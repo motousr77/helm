@@ -1,6 +1,6 @@
 ## When Docker allready installed do next:
 
-### Some installation of Go lang
+### Some installation of Go language
 ~~~sh
 mkdir $HOME/work && cd $HOME/work
 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
@@ -13,7 +13,7 @@ export PATH=$PATH:$GOROOT/bin
 ~~~
 ... from: https://golang.org/doc/install ... releases: https://golang.org/dl/
 
-### Inatallation of Kind
+### Inatallation Kind (kubernetes cluster in docker)
 ~~~sh
 GO111MODULE="on" go get sigs.k8s.io/kind@v0.6.1
 # Go put kind into $(go env GOPATH)/bin
@@ -74,3 +74,8 @@ sudo docker version
 # If you want use docker without sudo do this:
 sudo usermod -aG docker $USER
 # Then exit from $USER session and login again.
+~~~
+
+... from: https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+###### This installation for testing only (to be continue)
