@@ -45,6 +45,7 @@ sudo mv linux-amd64/helm /usr/local/bin/helm
 
 #### Installation Docker CE correctly (Debian/Ubuntu)
 ~~~sh
+# Do not Copy-Paste All of Scope!!! Because it can be broken.
 # Update the APT package index:
 sudo apt update
 # Install packages to allow apt to use a repository over HTTPS:
