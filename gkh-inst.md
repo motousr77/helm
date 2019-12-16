@@ -1,7 +1,6 @@
 ### Create Kind-cluster & Install Applications by Helm
-\
+
 Deploy the cluster by Kind
-<!-- Create cluster from yaml definition -->
 ~~~sh
 # ^ create cluster from yaml definition:
 cat << EOF | kind create cluster --config -
@@ -13,7 +12,7 @@ nodes:
 - role: worker
 EOF
 ~~~
-\
+
 Initialize and Update the Helm reposiroty
 ~~~sh
 helm init
@@ -22,7 +21,7 @@ helm repo update
 # ^ list Helm home (locate at the $HOME/.helm):
 tree $(helm home)
 ~~~
-\
+
 Then need to configure Tiller in the cluster
 ~~~sh
 # ^ create service account
@@ -37,26 +36,26 @@ kubectl create clusterrolebinding tiller-cluster-role \
 kubectl patch deploy -n kube-system tiller-deploy \
   -p '{"spec": {"template": {"spec": {"serviceAccount": "tiller"}}}}'
 ~~~
-\
+
 And now install any applications...
 ~~~sh
 # ^ install Prometheus-operator
 export OP_NAME=monitoring
 helm install --name $OP_NAME stable/prometheus-operator
 
-# ^ forward monitoring port 9090 (remain namespace in k8s):
+# ^ forward monitoring port 9090 (remain namespace in k8s)
 kubectl port-forward $(kubectl get pods --selector prometheus -o jsonpath='{.items[*].metadata.name}') 9090
 
-# ^ Operator
+# ^ forward prometheus operator port
 kubectl port-forward $(kubectl get pods --selector app=prometheus -o jsonpath='{.items[*].metadata.name}') 9090
 
-# ^ Alert manager
+# ^ forward alert manager port
 kubectl port-forward $(kubectl get pods --selector app=alertmanager -o jsonpath='{.items[*].metadata.name}') 9093
 
-# ^ Grafana
+# ^ forward grafana port
 kubectl port-forward $(kubectl get pods --selector app=grafana -o jsonpath='{.items[*].metadata.name}') 3000
 ~~~
-\
+
 Templates for some util operations:
 ~~~sh
 kubectl patch svc \
@@ -66,3 +65,4 @@ kubectl patch svc \
 ~~~
 
 ### To be continued!
+In the next solution i try to describe other useful tools and applications for Kubernetes cluster.
