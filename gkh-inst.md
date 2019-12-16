@@ -65,4 +65,10 @@ kubectl patch svc \
 ~~~
 
 ### To be continued!
-In the next solution i try to describe other useful tools and applications for Kubernetes cluster.
+In the next solutions i will try to describe other useful tools and applications for Kubernetes cluster.
+For example, solutions for SSH and SCP, CURL and WGET, Docker and Docker-Compose.
+Some useful links:
+https://v2.helm.sh/docs/developing_charts/
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+https://habr.com/ru/company/flant/blog/353410/
+https://sysdig.com/blog/kubernetes-monitoring-prometheus-operator-part3/
