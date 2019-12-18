@@ -5,7 +5,7 @@
 sudo apt update
 
 # ^ install packages to allow apt to use a repository over HTTPS
-sudo apt install \
+sudo apt install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -26,6 +26,13 @@ sudo add-apt-repository \
 
 # ^ update the APT package index
 sudo apt update
+
+# ^ ERROR scope
+# ^ if you catch update error (update failed) then you need some solution (will be edit)
+sudo apt-add-repository -r 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
+# ^ this is the temporary solution until i find new
+sudo apt update && sudo apt install docker.io -y
+# ^ RORRE epocs
 
 # ^ get list versions of docker-ce (Optional)
 sudo apt-cache policy docker-ce
@@ -83,7 +90,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 ~~~
 ... from: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
-### Inatallation Helm 2
+### Inatallation Helm 2 (2.16.1 in case below)
 ~~~sh
 wget https://get.helm.sh/helm-v2.16.1-linux-amd64.tar.gz
 tar -xzf helm-v2.16.1-linux-amd64.tar.gz

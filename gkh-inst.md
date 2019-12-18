@@ -15,8 +15,8 @@ EOF
 
 Initialize and Update the Helm reposiroty
 ~~~sh
-helm init
-helm repo update
+# ^ _
+helm init && helm repo update
 
 # ^ list Helm home (locate at the $HOME/.helm):
 tree $(helm home)
@@ -37,38 +37,23 @@ kubectl patch deploy -n kube-system tiller-deploy \
   -p '{"spec": {"template": {"spec": {"serviceAccount": "tiller"}}}}'
 ~~~
 
-And now install any applications...
+And now install any applications _ goto Next page
 ~~~sh
 # ^ install Prometheus-operator
 export OP_NAME=monitoring
 helm install --name $OP_NAME stable/prometheus-operator
+~~~
 
-# ^ forward monitoring port 9090 (remain namespace in k8s)
-kubectl port-forward $(kubectl get pods --selector prometheus -o jsonpath='{.items[*].metadata.name}') 9090
-
+Forward some of *services
+~~~sh
 # ^ forward prometheus operator port
-kubectl port-forward $(kubectl get pods --selector app=prometheus -o jsonpath='{.items[*].metadata.name}') 9090
+kubectl port-forward $(kubectl get pods --selector app=prometheus -o jsonpath='{..metadata.name}') 9090
 
 # ^ forward alert manager port
-kubectl port-forward $(kubectl get pods --selector app=alertmanager -o jsonpath='{.items[*].metadata.name}') 9093
+kubectl port-forward $(kubectl get pods --selector app=alertmanager -o jsonpath='{..metadata.name}') 9093
 
 # ^ forward grafana port
-kubectl port-forward $(kubectl get pods --selector app=grafana -o jsonpath='{.items[*].metadata.name}') 3000
+kubectl port-forward $(kubectl get pods --selector app=grafana -o jsonpath='{..metadata.name}') 3000
 ~~~
 
-Templates for some util operations:
-~~~sh
-kubectl patch svc \
-  $(kubectl get svc --selector app=grafana \
-    -o jsonpath='{.items[*].metadata.name}') \
-    --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
-~~~
-
-### To be continued!
-In the next solutions i will try to describe other useful tools and applications for Kubernetes cluster.
-For example, solutions for SSH and SCP, CURL and WGET, Docker and Docker-Compose.
-Some useful links:
-https://v2.helm.sh/docs/developing_charts/
-https://kubernetes.io/docs/reference/kubectl/cheatsheet/
-https://habr.com/ru/company/flant/blog/353410/
-https://sysdig.com/blog/kubernetes-monitoring-prometheus-operator-part3/
+## Next Page [](https://github.com/motousr77/helm/blob/master/app-dep.md)
