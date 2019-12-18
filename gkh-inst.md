@@ -56,4 +56,4 @@ kubectl port-forward $(kubectl get pods --selector app=alertmanager -o jsonpath=
 kubectl port-forward $(kubectl get pods --selector app=grafana -o jsonpath='{..metadata.name}') 3000
 ~~~
 
-## Next Page [](https://github.com/motousr77/helm/blob/master/app-dep.md)
+## Next Page [Application Deployments](https://github.com/motousr77/helm/blob/master/app-dep.md)
