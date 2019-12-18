@@ -40,8 +40,7 @@ kubectl patch deploy -n kube-system tiller-deploy \
 And now install any applications _ goto Next page
 ~~~sh
 # ^ install Prometheus-operator
-export OP_NAME=monitoring
-helm install --name $OP_NAME stable/prometheus-operator
+helm install --name monitoring stable/prometheus-operator
 ~~~
 
 Forward some of *services

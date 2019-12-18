@@ -1,4 +1,4 @@
-## Instll Applications 
+## Install Applications 
 
 Install LoadBalancer
 ~~~sh

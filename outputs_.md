@@ -1,3 +1,7 @@
+##### Some of gudes
+[Trying Prometheus Operator with Helm + Minikube](https://medium.com/faun/trying-prometheus-operator-with-helm-minikube-b617a2dccfa3)
+
+
 ~~~sh
 helm install --name ng-ing stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="10.0.2.15"
 ~~~
