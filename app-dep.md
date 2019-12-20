@@ -52,6 +52,7 @@ curl $SOME_IP:31777
 helm install --name ingress-ng stable/nginx-ingress
 ~~~
 
+
 #### Instal Kubernetes Dashboard
 ~~~sh
 # ^ install by helm
