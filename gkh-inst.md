@@ -13,20 +13,23 @@ nodes:
 EOF
 ~~~
 
-Use contexts in k8s
+Use/Check contexts in kubernetes cluster
 ~~~sh
 # ^ (Optional) get contexts list
 kubectl config get-contexts
+~~~
 
-# Optional - because switch to another context need if clusters more then one
+Optional - because switch to another context need we have several kind-clusters
 
+~~~sh
 # ^ (Optional) switch to kind context
 kubectl config use-context kind-kind
 ~~~
 
 Also we can labeled worker nodes like this
 ~~~sh
-# ^ ... in development ...
+# ^ very simple but i want to improve it (automate for several nodes)
+kubectl label node/<worker-name> node-role.kubernetes.io/worker=
 ~~~
 
 Initialize and Update the Helm reposiroty
@@ -59,7 +62,7 @@ And now install any applications _ goto Next page
 helm install --name monitoring stable/prometheus-operator
 ~~~
 
-Forward some of *services
+Forward some services
 ~~~sh
 # ^ forward prometheus operator port
 kubectl port-forward $(kubectl get pods --selector app=prometheus -o jsonpath='{..metadata.name}') 9090
@@ -71,4 +74,4 @@ kubectl port-forward $(kubectl get pods --selector app=alertmanager -o jsonpath=
 kubectl port-forward $(kubectl get pods --selector app=grafana -o jsonpath='{..metadata.name}') 3000
 ~~~
 
-## Next Page [Application Deployments](https://github.com/motousr77/helm/blob/master/app-dep.md)
+#### Next Page [Application Deployments](https://github.com/motousr77/helm/blob/master/app-dep.md)

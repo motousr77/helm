@@ -1,4 +1,4 @@
-## Install Applications 
+## Install Applications in the Kind cluster
 
 #### Install LoadBalancer
 ~~~sh
@@ -6,7 +6,7 @@
 helm install --name metallb stable/metallb
 ~~~
 
-#### Instead of port forwarding by kubectl (what we use in previous page) we can expose pods to the nodeports like this
+#### Instead of port forwarding by kubectl we can expose pods to the nodeport by load-balancer
 ~~~sh
 # ^ expose Prometheus to load-balancer
 kubectl expose pod $(kubectl get pods --selector app=prometheus -o jsonpath='{..metadata.name}') \
@@ -21,33 +21,27 @@ kubectl expose pod $(kubectl get pods --selector app=grafana -o jsonpath='{..met
   --port=3000 --type=LoadBalancer --name=grafana-2-lb --labels='exp=lb'
 ~~~
 
-#### Get node ip addresses
-~~~sh
-kubectl get nodes -o jsonpath='{..status.addresses[].address}'
-~~~
-
-#### Label services
+#### Label services and test connections
 ~~~sh
 # ^ do this if didn't it in previous steps 
+# === SOME CASE ===
 kubectl label service/alertmanaget-2-lb exp=lb
 kubectl label service/prometheus-2-lb exp=lb
 kubectl label service/grafana-2-lb exp=lb
-~~~
+# === SOME CASE ===
 
-And then we can print our services and ports
-~~~sh
+# ^ And now we can print our services and ports
 kubectl get svc --selector exp=lb
 
-# ^ and print ip addresses of the Nodes
-kubectl get nodes -o jsonpath='{..status.addresses[0].address}'
-#  or 
-kubectl get nodes -o jsonpath='{..status..address}'
-# and save some data (some of IP)
+# and export node IP address
 export SOME_IP=$(kubectl get nodes -o jsonpath='{..status..address}')
 
-# ^ if work below done and load-balancer working correctly
-#   we can access to application by connect to any nodes like this
-curl $SOME_IP:<application-port>
+# ^ if steps below done and load-balancer working correctly
+#   then we can access to application throughout connect to any nodes like this
+# === DEFINITION === > curl $SOME_IP:<application-port>
+curl $SOME_IP:31777
+
+# ^ this scope will be automated further (we can export application service node port)
 ~~~
 
 ... to be continued ...

@@ -48,18 +48,9 @@ sudo usermod -aG docker $USER
 # ^ then exit from $USER session and login again
 # ^ may be need to reboot (frequently in ubuntu)
 ~~~
-... from: https://docs.docker.com/install/linux/docker-ce/ubuntu
+_ from: https://docs.docker.com/install/linux/docker-ce/ubuntu
 
-### (Optional) Check some installed aplications and install nessesary
-~~~sh
-# ^ ...
-sudo apt install -y curl tree less watch vim htop
-
-# ^ add aliases to bash environment
-# ...
-~~~
-
-### Installation Go to some working direcoty (NOT recomended for production)
+### Installation Go to some working direcoty (not recomended for production)
 ~~~sh
 # ^ make Work directory
 mkdir $HOME/work && cd $HOME/work
@@ -75,9 +66,9 @@ export GOROOT=$HOME/work/go
 export GOPATH=$HOME/work/main-path
 export PATH=$PATH:$GOROOT/bin
 ~~~
-... from: https://golang.org/doc/install ... releases: https://golang.org/dl
+_ from: https://golang.org/doc/install _ releases: https://golang.org/dl
 
-### Inatallation Kind (kubernetes cluster in docker)
+### Installation Kind (Kubernetes in Docker)
 ~~~sh
 # install Kind
 GO111MODULE="on" go get sigs.k8s.io/kind@v0.6.1
@@ -90,7 +81,7 @@ EOF
 # ^ refresh env
 source $HOME/.profile
 ~~~
-... from: https://kind.sigs.k8s.io/docs/user/quick-start
+_ from: https://kind.sigs.k8s.io/docs/user/quick-start
 
 ### Installation kubectl
 ~~~sh
@@ -98,7 +89,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.16.0/bin/l
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ~~~
-... from: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+_ from: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 ### Inatallation Helm 2 (2.16.1 in case below)
 ~~~sh
@@ -107,7 +98,7 @@ tar -xzf helm-v2.16.1-linux-amd64.tar.gz
 mv helm-v2.16.1-linux-amd64.tar.gz tmp/
 sudo mv linux-amd64/helm /usr/local/bin/helm
 ~~~
-... from: https://v2.helm.sh/docs/using_helm/#installing-helm
-... releases: https://github.com/helm/helm/releases
+_ from: https://v2.helm.sh/docs/using_helm/#installing-helm
+_ releases: https://github.com/helm/helm/releases
 
-#### Next Steps: [Create Kind-cluster & Install Applications](https://github.com/motousr77/helm/blob/master/gkh-inst.md)
+##### Next Step: [Create Kind-cluster](https://github.com/motousr77/helm/blob/master/gkh-inst.md)
