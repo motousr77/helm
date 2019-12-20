@@ -122,4 +122,13 @@ kubectl expose deployment monitoring-grafana --type LoadBalancer --name=grafana-
 kubectl get nodes -o jsonpath='{.items[*].status.addresses[0].address}'
 # or
 kubectl get nodes -o jsonpath='{..status.addresses[0].address}'
+# or print with node name !!!
+kubectl get nodes -o jsonpath='{..status..address}'
+~~~
+
+#### Extract data > NodePort from Services
+~~~sh
+# kubectl get service -o jsonpath='{..spec.ports[*].nodePort}'
+kubectl get service -o jsonpath='{..spec..nodePort}'
+# create a table for services and ports ...
 ~~~

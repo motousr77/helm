@@ -13,11 +13,10 @@ nodes:
 EOF
 ~~~
 
-Use contextx in k8s
+Use contexts in k8s
 ~~~sh
 # ^ (Optional) get contexts list
 kubectl config get-contexts
-
 
 # Optional - because switch to another context need if clusters more then one
 
@@ -27,7 +26,7 @@ kubectl config use-context kind-kind
 
 Also we can labeled worker nodes like this
 ~~~sh
-# ^ ...
+# ^ ... in development ...
 ~~~
 
 Initialize and Update the Helm reposiroty
