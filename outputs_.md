@@ -120,4 +120,6 @@ kubectl expose deployment monitoring-grafana --type LoadBalancer --name=grafana-
 ~~~sh
 # get internal IP of all nodes
 kubectl get nodes -o jsonpath='{.items[*].status.addresses[0].address}'
+# or
+kubectl get nodes -o jsonpath='{..status.addresses[0].address}'
 ~~~

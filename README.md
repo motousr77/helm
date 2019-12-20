@@ -46,8 +46,18 @@ sudo docker version
 # ^ if you want use docker without sudo do this
 sudo usermod -aG docker $USER
 # ^ then exit from $USER session and login again
+# ^ may be need to reboot (frequently in ubuntu)
 ~~~
 ... from: https://docs.docker.com/install/linux/docker-ce/ubuntu
+
+### (Optional) Check some installed aplications and install nessesary
+~~~sh
+# ^ ...
+sudo apt install -y curl tree less watch vim htop
+
+# ^ add aliases to bash environment
+# ...
+~~~
 
 ### Installation Go to some working direcoty (NOT recomended for production)
 ~~~sh
