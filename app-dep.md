@@ -25,7 +25,7 @@ kubectl expose pod $(kubectl get pods --selector app=grafana -o jsonpath='{..met
 ~~~sh
 # ^ do this if didn't it in previous steps 
 # === SOME CASE ===
-kubectl label service/alertmanaget-2-lb exp=lb
+kubectl label service/alertmanager-2-lb exp=lb
 kubectl label service/prometheus-2-lb exp=lb
 kubectl label service/grafana-2-lb exp=lb
 # === SOME CASE ===
@@ -34,7 +34,7 @@ kubectl label service/grafana-2-lb exp=lb
 kubectl get svc --selector exp=lb
 
 # and export node IP address
-export SOME_IP=$(kubectl get nodes -o jsonpath='{..status..address}')
+export SOME_IP=$(kubectl get nodes -o jsonpath='{..status..address}' | cut -d ' ' -f 1)
 
 # ^ if steps below done and load-balancer working correctly
 #   then we can access to application throughout connect to any nodes like this
