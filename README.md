@@ -81,7 +81,7 @@ Save environment variables to user profile for vision Go after reboot
 cat >> ~/.profile << EOF
 export GOPATH=$HOME/Go-main
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export PATH=$PATH:$HOME/Go-main/bin:/usr/local/go/bin
 EOF
 ~~~
 _ from: https://golang.org/doc/install _ releases: https://golang.org/dl
