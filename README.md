@@ -51,38 +51,47 @@ sudo usermod -aG docker $USER
 _ from: https://docs.docker.com/install/linux/docker-ce/ubuntu
 
 ### Installation Go to some working direcoty (not recomended for production)
-[For more proper installation to the linux system recomend this ](https://github.com/motousr77/helm/blob/master/golang-sys.md)
 ~~~sh
-# ^ make Work directory
-mkdir $HOME/work && cd $HOME/work
-wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
-tar -xzf go1.13.5.linux-amd64.tar.gz
+# ^ prerequisite to installation Go language
+export GOVERSION=1.13.5
+export OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+export GOVAR=go$GOVERSION.$OS-amd64.tar.gz
 
-# ^ some moves
-mkdir tmp && mv go1.13.5.linux-amd64.tar.gz tmp/
-mkdir $HOME/work/main-path
+# ^ install go
+wget https://dl.google.com/go/${GOVAR}
+sudo tar -C /usr/local -xzf $GOVAR
+# ^ ...
+{
+  if [ ! -d $HOME/Go-main ]; then
+    mkdir $HOME/Go-main
+  fi
+}
+~~~
 
-# ^ create and save environment variables
-export GOROOT=$HOME/work/go
-export GOPATH=$HOME/work/main-path
-export PATH=$PATH:$GOROOT/bin
+Create Go language environment variables
+~~~sh
+# ^ ...
+export GOPATH=$HOME/Go-main && export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+~~~
+
+Save environment variables to user profile for vision Go after reboot
+~~~sh
+# ^ ...
+cat >> ~/.profile << EOF
+export GOPATH=$HOME/Go-main
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+EOF
 ~~~
 _ from: https://golang.org/doc/install _ releases: https://golang.org/dl
+
 
 ### Installation Kind (Kubernetes in Docker)
 ~~~sh
 # install Kind
 GO111MODULE="on" go get sigs.k8s.io/kind@v0.6.1
-
-# ^ the Go put Kind into $(go env GOPATH)/bin
-cat >> ~/.profile << EOF
-export PATH=$PATH:$(go env GOPATH)/bin
-EOF
-
-# ^ refresh env
-source $HOME/.profile
 ~~~
-_ from: https://kind.sigs.k8s.io/docs/user/quick-start
 
 ### Installation kubectl
 ~~~sh

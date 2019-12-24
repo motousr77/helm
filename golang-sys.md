@@ -1,6 +1,6 @@
-Install Go language to Linux system
+Install Go language to the Linux system 
 ~~~sh
-# ^ prerequisite to install Go languGE
+# ^ prerequisite to installation Go language
 export GOVERSION=1.13.5
 export OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 export GOVAR=go$GOVERSION.$OS-amd64.tar.gz
@@ -31,5 +31,6 @@ export GOPATH=$HOME/Go-main
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 EOF
+~~~
 
 ##### [Back to Home](https://github.com/motousr77/helm/)
