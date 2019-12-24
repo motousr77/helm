@@ -17,6 +17,10 @@ Use/Check contexts in kubernetes cluster
 ~~~sh
 # ^ (Optional) get contexts list
 kubectl config get-contexts
+
+# ^ label worker nodes
+kubectl label node/kind-worker node-role.kubernetes.io/worker=
+kubectl label node/kind-worker2 node-role.kubernetes.io/worker=
 ~~~
 
 Optional - because switch to another context need we have several kind-clusters
@@ -24,12 +28,6 @@ Optional - because switch to another context need we have several kind-clusters
 ~~~sh
 # ^ (Optional) switch to kind context
 kubectl config use-context kind-kind
-~~~
-
-Also we can labeled worker nodes like this
-~~~sh
-# ^ very simple but i want to improve it (automate for several nodes)
-kubectl label node/<worker-name> node-role.kubernetes.io/worker=
 ~~~
 
 Initialize and Update the Helm reposiroty

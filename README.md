@@ -89,7 +89,7 @@ _ from: https://golang.org/doc/install _ releases: https://golang.org/dl
 
 ### Installation Kind (Kubernetes in Docker)
 ~~~sh
-# install Kind
+# ^ install Kind
 GO111MODULE="on" go get sigs.k8s.io/kind@v0.6.1
 ~~~
 
@@ -111,4 +111,4 @@ sudo mv linux-amd64/helm /usr/local/bin/helm
 _ from: https://v2.helm.sh/docs/using_helm/#installing-helm
 _ releases: https://github.com/helm/helm/releases
 
-##### Next Step: [Create Kind-cluster](https://github.com/motousr77/helm/blob/master/gkh-inst.md)
+#### Next Step: [Create Kind-cluster](https://github.com/motousr77/helm/blob/master/gkh-inst.md)

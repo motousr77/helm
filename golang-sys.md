@@ -33,4 +33,4 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 EOF
 ~~~
 
-##### [Back to Home](https://github.com/motousr77/helm/)
+#### [Back to Home](https://github.com/motousr77/helm/)

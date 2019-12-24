@@ -55,14 +55,15 @@ helm install --name ingress-ng stable/nginx-ingress
 
 #### Instal Kubernetes Dashboard
 ~~~sh
-# ^ install by helm
-helm install --name kub-dashboard stable/kubernetes-dashboard
+# ^ create cluster-role-binding for the K8s Dashboard
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 
-# ^ check installation pod
-kubectl get pods --selector app=kubernetes-dashboard
+# ^ install the K8s Dashboard by Helm
+helm install --name dashboard stable/kubernetes-dashboard --namespace kube-system --set rbac.create=True --set rbac.clusterReadOnlyRole=True
 
-# ^ and expose to nodeport
-kubectl expose pod $(kubectl get pods --selector app=kubernetes-dashboard -o jsonpath='{..metadata.name}') \
-  --port=8443 --type=LoadBalancer --name=kub-dashboard-2-lb
+# ^ expose pod of the K8s Dashboard to the node-port (load-balancer)
+kubectl expose pod \
+  $(kubectl -n kube-system get pods --selector app=kubernetes-dashboard -o jsonpath='{..metadata.name}') \
+  --port=8443 --type=LoadBalancer --name=kub-dashboard-2-lb --labels='exp=lb'
 
 ~~~
