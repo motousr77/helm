@@ -51,6 +51,7 @@ sudo usermod -aG docker $USER
 _ from: https://docs.docker.com/install/linux/docker-ce/ubuntu
 
 ### Installation Go to some working direcoty (not recomended for production)
+[For more proper installation to the linux system recomend this ](https://github.com/motousr77/helm/blob/master/golang-sys.md)
 ~~~sh
 # ^ make Work directory
 mkdir $HOME/work && cd $HOME/work
