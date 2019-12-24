@@ -1,4 +1,4 @@
-Install Go language to the Linux system 
+Installation Go language to the Linux system 
 ~~~sh
 # ^ prerequisite to installation Go language
 export GOVERSION=1.13.5

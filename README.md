@@ -1,4 +1,4 @@
-### Installation Docker CE (debian)
+### Installation Docker CE to the Linux system (debian/ubuntu)
 ~~~sh
 # ^ do not Copy-Paste All of Scope!!! Because it can be broken.
 # ^ update the APT package index
@@ -38,7 +38,7 @@ sudo apt update && sudo apt install docker.io -y
 sudo apt-cache policy docker-ce
 
 # ^ install docker-ce (Optional) 18.06.3 version
-sudo apt-get install docker-ce=18.06.3~ce~3-0~ubuntu containerd.io
+sudo apt-get install -y docker-ce=18.06.3~ce~3-0~ubuntu containerd.io
 
 # ^ check installation
 sudo docker version
@@ -50,7 +50,7 @@ sudo usermod -aG docker $USER
 ~~~
 _ from: https://docs.docker.com/install/linux/docker-ce/ubuntu
 
-### Installation Go to some working direcoty (not recomended for production)
+### Installation Go language to the Linux system 
 ~~~sh
 # ^ prerequisite to installation Go language
 export GOVERSION=1.13.5
