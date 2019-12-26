@@ -1,6 +1,6 @@
 ## Install Applications in the Kind cluster
 
-#### Install LoadBalancer
+#### Install Load-Balancer
 ~~~sh
 # ^ we will be use MetalLB
 helm install --name metallb stable/metallb
@@ -12,7 +12,7 @@ helm install --name metallb stable/metallb
 kubectl expose pod $(kubectl get pods --selector app=prometheus -o jsonpath='{..metadata.name}') \
   --port=9090 --type=LoadBalancer --name=prometheus-2-lb --labels='exp=lb'
 
-# ^ expose Alertm Manager to load-balancer
+# ^ expose Alertmanager to load-balancer
 kubectl expose pod $(kubectl get pods --selector app=alertmanager -o jsonpath='{..metadata.name}') \
   --port=9093 --type=LoadBalancer --name=alertmanager-2-lb --labels='exp=lb'
 
@@ -44,16 +44,10 @@ curl $SOME_IP:31777
 # ^ this scope will be automated further (we can export application service node port)
 ~~~
 
-... to be continued ...
+### To be continued . . .
 
-#### Install Ingress
-~~~sh
-# ^ ...
-helm install --name ingress-ng stable/nginx-ingress
-~~~
-
-
-#### Instal Kubernetes Dashboard
+#### Install Kubernetes Dashboard (will be redacted)
+=== Here some bugs with deployment and need to test ===
 ~~~sh
 # ^ create cluster-role-binding for the K8s Dashboard
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
